@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<head>
+    <meta charset="UTF-8">
+    <title>計算プログラム</title>
+<script>
+    function CAL() {
+        var cal = document.getElementsByName("cal");
+        var ans;
+        var v1 = document.getElementById("a").value;
+        var v2 = document.getElementById("b").value;
+        if(cal[0].checked){
+            ans = Number(v1)+Number(v2);
+        }else if(cal[1].checked){
+            ans = Number(v1)-Number(v2);
+        }else if(cal[2].checked){
+            ans = Number(v1)*Number(v2);
+        }else if(cal[3].checked){
+            try{
+                if(Number(v2)==0){
+                    throw new Error("0除算");
+                }
+                ans = Number(v1)/Number(v2);
+            }catch(e){
+                alert(e.message);
+            }
+        }else{
+            alert("エラーです");
+        }
+
+        kotae.value=ans;
+    }
+</script>
+</head>
+<body>
+    <h1>２つの数の計算</h1>
+    <form>
+        <input type="radio" name="cal" value="add" checked>足し算
+        <input type="radio" name="cal" value="sub">引き算
+        <input type="radio" name="cal" value="times">掛け算
+        <input type="radio" name="cal" value="div">割り算</br>
+        A= <input type="text" id="a" /> </br>
+        B= <input type="text" id="b" /> </br>
+        <input type="button" onclick="CAL()" value="足し算"></br>
+        答え=<input type="text" id="kotae" />
+    </form>
+</body>
